@@ -1,0 +1,14 @@
+CREATE DATABASE <%TARGET-DB%>;
+GRANT ALL PRIVILEGES ON DATABASE <%TARGET-DB%> TO <%DB-USER%>;
+
+\connect <%TARGET-DB%>;
+CREATE SCHEMA SDB;
+create extension dblink;
+
+CREATE TABLE SDB.account(
+   user_id serial PRIMARY KEY,
+   username VARCHAR (50) UNIQUE NOT NULL,
+   password VARCHAR (50) NOT NULL,
+   active BOOLEAN NOT NULL,
+   email VARCHAR (355) NOT NULL
+);
