@@ -20,7 +20,7 @@ def cli():
 
 @cli.command()
 def test():
-    """Tests the connection to the database by executing a simple query. 
+    """Test db-connection. 
     Do not forget to set environment variables for PSQL to access the database (e.g. PGPASSWORD)"""
     click.echo("Checking database connection.")
     try:
@@ -44,7 +44,7 @@ def test():
 @click.option('--source-db', required=True, help='The name of the database from which the data will be migrated to the target database.')
 @click.option('--target-db', required=True, help='The name of the database to which the data will be migrated.')
 def migrate(schema_file, data_file, work_directory, source_db, target_db):
-    """Wrapper around psql to migrate existing database (with data) to a new / target database. 
+    """Migrate existing database and data to a fresh database. 
     Do not forget to set environment variables for PSQL to access the database (e.g. PGPASSWORD)"""
     click.echo(f"Migrating from {source_db} to {target_db}. Using {click.format_filename(work_directory)} as working-directory.")
     
